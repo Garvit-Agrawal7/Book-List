@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Library</title>
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+<h1>My Library</h1>
+<ul>
+    {% for book in books %}
+        <li>
+            <a href="{{ url_for('delete', title_id=book['title']) }}">
+                Delete
+            </a>
+            {{ book['title'] }} - {{ book['author'] }} - {{ book['rating'] }}/10
+            <a href="{{ url_for('change_rating', title_id=book['title']) }}">
+                Edit Rating
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('add') }}">Add New Book</a>
+</body>
+</html>
